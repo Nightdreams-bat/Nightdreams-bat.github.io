@@ -286,17 +286,6 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* ---------- section index (right edge) ---------- */
-.sidx { position: fixed; right: max(22px, env(safe-area-inset-right, 0px)); top: 50%; transform: translateY(-50%); z-index: 24; display: grid; gap: 16px; justify-items: end; }
-.sidx a { display: grid; grid-auto-flow: column; align-items: center; gap: 10px; text-decoration: none; color: var(--ink-3); font: 500 var(--t1)/1 var(--f-mono); letter-spacing: .12em; transition: color .3s; }
-.sidx em { font-style: normal; text-transform: uppercase; letter-spacing: .16em; opacity: 0; transform: translateX(8px); transition: opacity .35s, transform .35s; }
-.sidx i { display: block; width: 14px; height: 1px; background: currentColor; transition: width .5s cubic-bezier(.2, .8, .2, 1), background .3s; }
-.sidx a.on { color: var(--ink); }
-.sidx a.on i { width: 30px; background: var(--violet); }
-.sidx a:hover em, .sidx a:focus-visible em { opacity: 1; transform: none; }
-.sidx a:hover, .sidx a:focus-visible { color: var(--ink); outline: none; }
-@media (max-width: 900px) { .sidx { display: none; } }
-
 /* ---------- shared section heading (small, not shouting) ---------- */
 .sec-head { display: grid; justify-items: center; gap: 10px; text-align: center; }
 .sec-k { margin: 0; font: 700 var(--t1)/1 var(--f-display); letter-spacing: .14em; text-transform: uppercase; color: var(--violet); }
@@ -352,55 +341,11 @@ html.lenis, html.lenis body { height: auto; }
 .cm-here { position: absolute; top: 52px; transform: translateX(-50%); white-space: nowrap; font: 700 8.5px/1 var(--f-display); letter-spacing: .08em; text-transform: uppercase; color: var(--violet); }
 @keyframes ring { to { transform: rotate(360deg); } }
 
-/* ---------- case study: how the detector reads an email ---------- */
-.study-sec { position: relative; z-index: 1; }
-.study-pin { box-sizing: border-box; height: 100vh; height: 100svh; max-width: 1240px; margin: 0 auto; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: clamp(12px, 3vh, 28px); padding-block: clamp(52px, 8vh, 88px) clamp(14px, 3vh, 30px); }
-.st-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(20px, 3vw, 48px); align-items: center; min-height: 0; }
-.st-mail { position: relative; background: #f2f1ed; color: #0b0b0d; border: 1px solid #0b0b0d; box-shadow: 0 30px 80px rgba(0, 0, 0, .55); font: 400 14px/1.6 var(--f-mono); }
-.st-mail .bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: #0b0b0d; color: #f2f1ed; font: 700 11px/1 var(--f-display); letter-spacing: .1em; text-transform: uppercase; }
-.st-mail .bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3a40; }
-.st-mail .bar span { margin-left: 10px; }
-.st-mail .hd { padding: 16px 20px 10px; border-bottom: 1px dashed rgba(11, 11, 13, .3); }
-.st-mail .bd { padding: 14px 20px 18px; }
-.st-mail p { margin: 0 0 8px; }
-.st-mail .k { display: inline-block; min-width: 7.5ch; color: #6a6a70; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
-.st-mail .btn { display: inline-block; background: #0b0b0d; color: #f2f1ed; padding: 9px 14px; font: 700 12px/1 var(--f-display); letter-spacing: .08em; text-transform: uppercase; }
-.st-mail .url { font-size: 12px; color: #6a6a70; }
-.st-mail [data-f] { transition: background .45s, color .45s; }
-.st-mail [data-f].hit { background: rgba(227, 38, 30, .12); color: #b3161c; }
-.st-mail .btn[data-f].hit { background: #b3161c; color: #fff; }
-.st-focus { position: absolute; left: 0; top: 0; width: 0; height: 0; border: 2px solid var(--violet); border-radius: 3px; box-shadow: 0 0 0 4px rgba(162, 89, 255, .18), 0 0 26px rgba(162, 89, 255, .45); opacity: 0; pointer-events: none; }
-.st-panel { border: 1px solid var(--rule); background: rgba(6, 6, 9, .84); padding: clamp(16px, 2.4vw, 26px); display: grid; gap: 16px; min-width: 0; }
-.sp-k { margin: 0; font: 500 var(--t1)/1.4 var(--f-mono); letter-spacing: .16em; text-transform: uppercase; color: var(--ink-3); }
-.sp-k b { color: var(--ink); font-weight: 500; }
-.sp-feats { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.sp-feats li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: center; font: 400 var(--t2)/1.4 var(--f-mono); color: var(--ink-3); transition: color .35s; }
-.sp-feats li b { font: 700 var(--t2)/1 var(--f-display); color: var(--ink-3); font-variant-numeric: tabular-nums; transition: color .35s; }
-.sp-feats li i { grid-column: 1 / -1; height: 3px; background: var(--rule); position: relative; overflow: hidden; }
-.sp-feats li i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: calc(var(--w, 0) * 250%); background: var(--violet); transform: scaleX(0); transform-origin: left; transition: transform .7s cubic-bezier(.2, .8, .2, 1); }
-.sp-feats li.hit { color: var(--ink); }
-.sp-feats li.hit b { color: var(--blood-hot); }
-.sp-feats li.hit i::after { transform: scaleX(1); }
-.sp-score { display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--rule); font: 700 var(--t1)/1 var(--f-display); letter-spacing: .1em; text-transform: uppercase; }
-.sp-bar { flex: 1; height: 8px; background: var(--rule); position: relative; }
-.sp-bar i { position: absolute; inset: 0 auto 0 0; width: 4%; background: var(--violet); transition: background .3s; }
-.sp-bar .thr { position: absolute; left: 80%; top: -5px; bottom: -5px; width: 2px; background: var(--ink-2); }
-.sp-bar .thr::after { content: "0.80"; position: absolute; top: -15px; left: 50%; transform: translateX(-50%); font: 500 9px/1 var(--f-mono); letter-spacing: .08em; color: var(--ink-3); }
-.sp-score strong { min-width: 3.2em; text-align: right; font-size: var(--t3); font-variant-numeric: tabular-nums; }
-.sp-score.hot .sp-bar i { background: var(--blood-hot); }
-.sp-score.hot strong { color: var(--blood-hot); }
-.sp-verdict { margin: 0; display: flex; align-items: center; gap: 10px; font: 500 var(--t2)/1.4 var(--f-mono); color: var(--ink-2); }
-.sp-verdict .dot { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--violet); box-shadow: 0 0 10px var(--violet); animation: blink 1.2s steps(1) infinite; }
-.sp-verdict.done { color: var(--ink); }
-.sp-verdict.done .dot { background: var(--blood-hot); box-shadow: 0 0 12px var(--blood-hot); animation: none; }
-.sp-code { justify-self: start; }
-.st-note { margin: 0; text-align: center; font: 500 var(--t1)/1.5 var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
-
 /* ---------- case view: poster morph ---------- */
 .cv-ghost { position: fixed; z-index: 60; pointer-events: none; image-rendering: pixelated; box-shadow: 0 30px 80px rgba(0, 0, 0, .6); }
 
-/* keep the pinned sections clear of the section index on desktop */
-@media (min-width: 901px) { .cases-pin, .study-pin { padding-left: 96px; padding-right: 96px; } .study-pin { max-width: 1432px; } }
+/* a little more side room for the pinned slideshow on desktop */
+@media (min-width: 901px) { .cases-pin { padding-left: 64px; padding-right: 64px; } }
 
 /* hover lift on tiles uses `translate`, so scroll tweens on `transform` stay smooth */
 .tile { transition: border-color .25s, translate .25s; }
@@ -412,24 +357,14 @@ html.lenis, html.lenis body { height: auto; }
   .cm-unit { font-size: 8px; letter-spacing: .1em; }
   .cm-n { width: 22px; height: 22px; margin: -11px 0 0 -11px; }
   .cm-n canvas { width: 12px; height: 12px; }
-  .st-grid { grid-template-columns: 1fr; gap: 12px; align-content: start; }
-  .st-mail { font-size: 11.5px; }
-  .st-mail .hd, .st-mail .bd { padding-inline: 12px; }
-  .st-mail .k { min-width: 6ch; font-size: 9.5px; }
-  .st-mail .bd p:first-child { display: none; }
-  .st-panel { padding: 12px; gap: 10px; }
-  .sp-feats { gap: 7px; }
-  .sp-feats li { font-size: 11.5px; }
-  .study-pin { padding-block: 48px 10px; }
 }
 
 /* no motion or no libraries: a calm static layout, everything visible */
-body.static .cases-pin, body.static .study-pin { height: auto; }
+body.static .cases-pin { height: auto; }
 body.static .cs-stage { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); gap: 18px; perspective: none; }
 body.static .cs-track { display: contents; }
 body.static .cs-card { position: relative; left: auto; top: auto; width: auto; margin: 0; }
 body.static .cs-cap { display: none; }
-body.static .st-focus { display: none; }
 </style>
 </head>
 <body>
@@ -439,13 +374,6 @@ body.static .st-focus { display: none; }
 
 <div class="prog" id="prog"></div>
 <button class="replay" id="replay" type="button">Replay intro</button>
-<nav class="sidx" id="sidx" aria-label="Sections">
-  <a href="#top" data-s="top"><em>Night</em><span>00</span><i></i></a>
-  <a href="#cases" data-s="cases"><em>Cases</em><span>01</span><i></i></a>
-  <a href="#study" data-s="study"><em>Case study</em><span>02</span><i></i></a>
-  <a href="#about" data-s="about"><em>Dossier</em><span>03</span><i></i></a>
-  <a href="#contact" data-s="contact"><em>Contact</em><span>04</span><i></i></a>
-</nav>
 
 
 <main>
@@ -478,41 +406,6 @@ body.static .st-focus { display: none; }
         </div>
         <nav class="cs-map" id="csMap" aria-label="Roadmap"><div class="cm-in" id="cmIn"></div></nav>
       </div>
-    </div>
-  </section>
-
-  <section class="study-sec" id="study" aria-label="Case study: how my phishing detector works">
-    <div class="study-pin gut">
-      <header class="st-head sec-head"><p class="sec-k">02 &middot; Now working on &middot; Case 01</p><h2 class="sec-h">How my detector reads a phishing email.</h2></header>
-      <div class="st-grid" id="stGrid">
-        <div class="st-mail" id="stMail">
-          <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>Inbox &middot; 1 new</span></div>
-          <div class="hd">
-            <p><span class="k">From</span><span data-f="1">security@paypa1-support.com</span></p>
-            <p><span class="k">Subject</span><span data-f="2">Your account is locked</span></p>
-          </div>
-          <div class="bd">
-            <p>Dear customer, we noticed unusual activity on your account.</p>
-            <p>Confirm your details <span data-f="2">within 24 hours</span>, or we close it.</p>
-            <p><span class="btn" data-f="3">Log in to PayPal</span></p>
-            <p class="url"><span data-f="3">real address: http://paypa1-verify.co/login</span></p>
-          </div>
-          <div class="st-focus" id="stFocus" aria-hidden="true"></div>
-        </div>
-        <div class="st-panel">
-          <p class="sp-k"><b id="spStep">Step 1 / 4</b> &middot; <span id="spName">Scan the message</span></p>
-          <ul class="sp-feats" id="spFeats">
-            <li style="--w:.04"><span>Base rate</span><b>+0.04</b><i></i></li>
-            <li style="--w:.31"><span>Look-alike sender domain</span><b>+0.31</b><i></i></li>
-            <li style="--w:.22"><span>Pressure words</span><b>+0.22</b><i></i></li>
-            <li style="--w:.37"><span>Link text &ne; real address</span><b>+0.37</b><i></i></li>
-          </ul>
-          <div class="sp-score" id="spScore"><span>Risk</span><div class="sp-bar"><i id="spFill"></i><b class="thr" aria-hidden="true"></b></div><strong id="spVal">0.04</strong></div>
-          <p class="sp-verdict" id="spVerdict"><span class="dot" aria-hidden="true"></span><span id="spVText">Scanning&hellip;</span></p>
-          <a class="cc-open sp-code" href="https://github.com/Nightdreams-bat" target="_blank" rel="noopener">See the code &#8599;</a>
-        </div>
-      </div>
-      <p class="st-note">Illustration of the method. The weights are example values.</p>
     </div>
   </section>
 
@@ -1391,74 +1284,30 @@ function Cases(motion) {
   $('ccOpen').addEventListener('click', () => openCase(shown, cards[shown].querySelector('canvas')));
 }
 
-function Study(motion) {
-  const mail = $('stMail'), focus = $('stFocus'), feats = [...document.querySelectorAll('#spFeats li')];
-  const parts = [...mail.querySelectorAll('[data-f]')], fill = $('spFill'), val = $('spVal'), score = $('spScore'), verdict = $('spVerdict');
-  const W8 = [.04, .31, .22, .37], NAMES = ['Scan the message', 'Read the sender', 'Read the words', 'Check the link', 'Result'];
-  const shown = { v: .04 };
-  let step = -1;
-  const paint = () => { fill.style.width = (shown.v * 100).toFixed(1) + '%'; val.textContent = shown.v.toFixed(2); score.classList.toggle('hot', shown.v >= .8); };
-  const frameTo = s => {
-    const box = s === 0 ? [mail] : parts.filter(el => +el.dataset.f === s);
-    if (!box.length || s > 3) { if (window.gsap) gsap.to(focus, { opacity: 0, duration: .35 }); else focus.style.opacity = '0'; return; }
-    const m = mail.getBoundingClientRect();
-    let l = 1e9, t = 1e9, r = -1e9, b = -1e9;
-    box.forEach(el => { const q = el.getBoundingClientRect(); l = Math.min(l, q.left); t = Math.min(t, q.top); r = Math.max(r, q.right); b = Math.max(b, q.bottom); });
-    const pad = s === 0 ? 0 : 6, to = { left: l - m.left - pad, top: t - m.top - pad, width: r - l + pad * 2, height: b - t + pad * 2, opacity: 1 };
-    if (window.gsap && motion) gsap.to(focus, { ...to, duration: .65, ease: 'power3.inOut' });
-    else Object.assign(focus.style, { left: to.left + 'px', top: to.top + 'px', width: to.width + 'px', height: to.height + 'px', opacity: '1' });
-  };
-  const set = s => {
-    if (s === step) return; step = s;
-    $('spStep').textContent = s < 4 ? 'Step ' + (s + 1) + ' / 4' : 'Result';
-    $('spName').textContent = NAMES[s];
-    parts.forEach(el => el.classList.toggle('hit', +el.dataset.f <= s));
-    feats.forEach((li, i) => li.classList.toggle('hit', i <= Math.min(s, 3)));
-    const total = W8.slice(0, Math.min(s, 3) + 1).reduce((x, y) => x + y, 0);
-    if (window.gsap && motion) gsap.to(shown, { v: total, duration: .8, ease: 'power2.out', onUpdate: paint }); else { shown.v = total; paint(); }
-    verdict.classList.toggle('done', s >= 4);
-    $('spVText').textContent = s >= 4 ? 'Flagged as phishing, before anyone clicks.' : 'Scanning…';
-    frameTo(s);
-  };
-  if (!motion) { set(4); return; }
-  set(0);
-  ScrollTrigger.create({
-    trigger: $('study'), pin: true, start: 'top top', end: () => '+=' + Math.round(innerHeight * 2.6),
-    onUpdate: self => set(Math.min(4, Math.floor(self.progress * 5))),
-    onRefresh: () => { const s = step; step = -1; set(Math.max(0, s)); }
-  });
-}
-
 
 /* ---------- story: smooth scroll, section index, color, calm section changes ---------- */
 let lenis = null;
-const TINTS = { top: [0, 0, 0], cases: [.15, .05, .3], study: [.3, .02, .04], about: [.03, .07, .17], contact: [.15, .05, .3] };
+const TINTS = { top: [0, 0, 0], cases: [.15, .05, .3], about: [.03, .07, .17], contact: [.15, .05, .3] };
 function Story() {
   const G = window.gsap, ST = window.ScrollTrigger, motion = !reduce && !!G && !!ST;
-  const ids = ['top', 'cases', 'study', 'about', 'contact'], links = [...document.querySelectorAll('#sidx a')];
+  const ids = ['top', 'cases', 'about', 'contact'];
   let cur = '';
   const pick = () => {
     const mid = innerHeight * .5; let now = 'top';
     ids.forEach(id => { const el = $(id); if (el && el.getBoundingClientRect().top <= mid) now = id; });
     if (now === cur) return; cur = now;
-    links.forEach(l => l.classList.toggle('on', l.dataset.s === now));
     bg.setTint(TINTS[now]);
   };
   addEventListener('scroll', pick, { passive: true }); addEventListener('resize', pick);
-  links.forEach(l => l.addEventListener('click', e => {
-    e.preventDefault();
-    const el = $(l.dataset.s), y = l.dataset.s === 'top' ? 0 : el.getBoundingClientRect().top + scrollY;
-    if (lenis) lenis.scrollTo(y, { duration: 1.4 }); else scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
-  }));
 
-  if (!motion) { document.body.classList.add('static'); Cases(false); Study(false); pick(); return; }
+  if (!motion) { document.body.classList.add('static'); Cases(false); pick(); return; }
   G.registerPlugin(ST);
   if (window.Lenis) {
     lenis = new window.Lenis({ lerp: .1, smoothWheel: true });
     lenis.on('scroll', ST.update);
     G.ticker.add(t => lenis.raf(t * 1000)); G.ticker.lagSmoothing(0);
   }
-  Cases(true); Study(true);
+  Cases(true);
 
   /* the hero recedes: smaller, fainter, a little higher; the glyphs drift */
   G.to('.id', { yPercent: -14, scale: .95, opacity: 0, ease: 'none', scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom 15%', scrub: true } });
@@ -1466,11 +1315,10 @@ function Story() {
 
   /* headings rise in */
   document.querySelectorAll('.sec-head').forEach(h => G.from(h.children, { y: 26, opacity: 0, stagger: .08, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: h, start: 'top 88%', toggleActions: 'play none none reverse' } }));
-  /* the slideshow rises in, then recedes when the case study comes */
+  /* the slideshow rises in, then recedes when the dossier comes */
   const rise = (el, trig) => G.fromTo(el, { y: 60, opacity: 0 }, { y: 0, opacity: 1, ease: 'none', scrollTrigger: { trigger: trig, start: 'top 85%', end: 'top 20%', scrub: true } });
   const recede = (els, trig, end) => G.fromTo(els, { y: 0, scale: 1, opacity: 1 }, { y: -40, scale: .96, opacity: 0, ease: 'none', immediateRender: false, scrollTrigger: { trigger: trig, start: 'top 95%', end: end, scrub: true } });
-  rise('#csBody', '#cases'); recede(['#csBody', '.cs-head'], '#study', 'top 30%');
-  rise('#stGrid', '#study'); recede(['#stGrid', '.st-head', '.st-note'], '#about', 'top 35%');
+  rise('#csBody', '#cases'); recede(['#csBody', '.cs-head'], '#about', 'top 30%');
   /* dossier: the card rises, the booking photo develops, the facts follow */
   G.from('.dossier', { y: 70, scale: .97, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.dossier', start: 'top 98%', end: 'top 55%', scrub: true } });
   G.fromTo('.mug canvas', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', ease: 'none', scrollTrigger: { trigger: '.dossier', start: 'top 80%', end: 'top 25%', scrub: true } });
